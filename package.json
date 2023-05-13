@@ -22,5 +22,6 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
+  "proxy" : "http://dajungenv.eba-b3tjfhpr.ap-northeast-2.elasticbeanstalk.com",
   "private": true
 }

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function Character() {
   return (
     <View style={styles.characterBox}>
-        캐릭터
+
     </View>
   );
 }
@@ -11,7 +11,7 @@ export default function Character() {
 const styles = StyleSheet.create({
     characterBox: {
         width: '100%',
-        height: '44.5%',
+        height: '30%',
         alignItems: 'center',
         justifyContent: 'center',
     }
