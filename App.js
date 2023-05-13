@@ -1,10 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import UpperBar from './Components/UpperBar';
+import BottomBar from './Components/BottomBar';
+import Main from './Screen/Main/Main';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <StatusBar style="light" />
+      <UpperBar />
+        <Main />
+      <BottomBar />
     </View>
   );
 }
@@ -12,8 +16,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });
