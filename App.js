@@ -13,7 +13,7 @@ export default function App() {
   const [missionData, setMissionData] = useState(null);
   const ServerURL = 'http://dajungenv.eba-b3tjfhpr.ap-northeast-2.elasticbeanstalk.com/';
     const LoadMissionData = async() => {
-        await fetch(ServerURL + '/mission/1?family_id=5678&user_id=91011', {
+        await fetch(ServerURL + '/mission/2?family_id=5678&user_id=91011', {
             method: 'get',
         })
         .then((res) => {

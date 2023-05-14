@@ -1,14 +1,16 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import Missionboard from './Missionboard';
 import MissionState from './MissionState';
-import { useState, createContext } from 'react';
+import { useState, createContext, useContext } from 'react';
 import MissionModalText from './MissionModalText';
 import MissionModalFile from './MissionModalFile';
+import { ScreenContext } from '../../App';
 
 export const MissionModalContext = createContext();
 
 export default function Mission() {
 
+    const { missionData, setMissionData } = useContext(ScreenContext);
     const [inputModalOn, setInputModalOn] = useState(false);
 
     return (
@@ -37,12 +39,9 @@ export default function Mission() {
             <View style={styles.missionStateArea}>
                 <MissionState />
             </View>
-            {/* {inputModalOn 
+            {missionData?.mission.mission_id === 1 
             ? <MissionModalContext.Provider value={{ inputModalOn, setInputModalOn }}><MissionModalText/></MissionModalContext.Provider>
-            : null} */}
-            {inputModalOn 
-            ? <MissionModalContext.Provider value={{ inputModalOn, setInputModalOn }}><MissionModalFile/></MissionModalContext.Provider>
-            : null}
+            : <MissionModalContext.Provider value={{ inputModalOn, setInputModalOn }}><MissionModalFile/></MissionModalContext.Provider>}
         </View>
     );
 }

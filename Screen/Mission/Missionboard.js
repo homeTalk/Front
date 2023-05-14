@@ -1,39 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import { ScreenContext } from '../../App';
 
 export default function Missionboard() {
 
-    const [familyMember, setFamilyMember] = useState();
-
-    const ServerURL = 'http://dajungenv.eba-b3tjfhpr.ap-northeast-2.elasticbeanstalk.com/';
-    const LoadMissionData = async() => {
-        await fetch(ServerURL + '/mission/1?family_id=5678&user_id=91011', {
-            method: 'get',
-        })
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return res.json();
-        })
-        .then((data) => {
-            console.log(data)
-        })
-        .catch(error => {
-            console.error('Error:', error);
-          });
-    };
-    useEffect(() => {
-        // LoadMissionData();
-    },[])
+    const { missionData, setMissionData } = useContext(ScreenContext);
 
 
     return (
         <View style={styles.missionboardContainer}>
-            <Text  style={styles.missionIcon}>
-                ✈️
-            </Text>
-            <Text style={styles.missionContentsText}>가족과 함께 여행가고 싶은 장소를 적어주세요!</Text>
+            
+            {missionData?.mission.mission_id === 1 
+                ?<Text  style={styles.missionIcon}> 😌 </Text>
+                :<Text  style={styles.missionIcon}> 🤳 </Text>}
+            
+            <Text style={styles.missionContentsText}>{missionData?.mission.mission_name}</Text>
         </View>
     );
 }

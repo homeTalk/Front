@@ -1,11 +1,12 @@
 import { useEffect, useState, useContext } from 'react';
 import { StyleSheet, Text, View, Modal, Pressable, TextInput } from 'react-native';
 import { MissionModalContext } from './Mission'; 
-import Svg, { Path } from 'react-native-svg'; 
+import { ScreenContext } from '../../App';
 
 export default function MissionModalText() {
 
     const { inputModalOn, setInputModalOn } = useContext(MissionModalContext);
+    const { missionData, setMissionData } = useContext(ScreenContext);
     const [ missionInput, setMissionInput ] = useState('');
 
     return (
@@ -17,7 +18,10 @@ export default function MissionModalText() {
             <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', zIndex: 1}} >
                 <Pressable style={styles.missionModalBack} onPress={() => setInputModalOn(false)} />
                 <View style={styles.missionModalContainer} >
-                    <Text style={styles.missionModalText}> 가족과 함께 여행가고 싶은 장소를 적어주세요! </Text>
+                    {missionData?.mission.mission_id === 1 
+                        ? <Text style={styles.missionModalText}> {missionData.mission.mission_name} </Text>
+                        :null}
+                    
                     <View style={styles.missionInpuBox}>
                         <TextInput 
                             style={styles.missionTextInput}

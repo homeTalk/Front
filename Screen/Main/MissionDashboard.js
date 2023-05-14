@@ -5,13 +5,11 @@ import { ScreenContext } from '../../App';
 
 export default function MissionDashboard() {
 
-    const [familyMember, setFamilyMember] = useState();
     const { missionData, setMissionData } = useContext(ScreenContext);
 
-    
     return (
         <View style={styles.dashboardContainer}>
-            <Text style={styles.dashboardTitle}>{missionData?.mission.mission_description}</Text>
+            <Text style={styles.dashboardTitle}>{missionData?.mission.mission_name}</Text>
             <View  style={styles.dashboardProfileBox}>
                 <View>
                     <View style={missionData?.family_members[0].status ? styles.profileBoxActivate : styles.profileBox }>

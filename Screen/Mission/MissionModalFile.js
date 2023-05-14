@@ -3,10 +3,12 @@ import { StyleSheet, Text, View, Modal, Pressable, Image } from 'react-native';
 import { MissionModalContext } from './Mission'; 
 import Svg, { Path, Rect } from 'react-native-svg'; 
 import ImageUploader from '../../Components/ImageUploader';
+import { ScreenContext } from '../../App';
 
 export default function MissionModalFile() {
 
     const { inputModalOn, setInputModalOn } = useContext(MissionModalContext);
+    const { missionData, setMissionData } = useContext(ScreenContext);
     const [ missionInput, setMissionInput ] = useState('');
 
 
@@ -22,7 +24,9 @@ export default function MissionModalFile() {
                     {missionInput === '' 
                     ?
                     <>
-                        <Text style={styles.missionModalText}> 지금 바로 셀카 찍어서 업로드! </Text>
+                        {missionData?.mission.mission_id === 2
+                        ? <Text style={styles.missionModalText}> {missionData.mission.mission_name} </Text>
+                        :null}
                         <View style={styles.missionInpuBox}>
                             <ImageUploader imageUrl={missionInput} setImageUrl={setMissionInput}>
                                 <Svg width="273" height="96" viewBox="0 0 273 96" fill="none" xmlns="http://www.w3.org/2000/svg">
