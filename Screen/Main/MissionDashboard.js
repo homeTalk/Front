@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import Svg, { Path, Rect } from 'react-native-svg'; 
 
 export default function MissionDashboard() {
 
@@ -57,6 +58,12 @@ export default function MissionDashboard() {
                     <Text style={styles.profileText}>준서</Text>
                 </View>
             </View>
+            <View style={styles.missionProgressBar}>
+                <Svg width="199" height="12" viewBox="0 0 199 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <Rect width="199" height="12" rx="6" fill="#FFF4E2"/>
+                    <Rect width="51" height="12" rx="6" fill="#FFA41C"/>
+                </Svg>
+            </View>
         </View>
     );
 }
@@ -64,7 +71,7 @@ export default function MissionDashboard() {
 const styles = StyleSheet.create({
     dashboardContainer: {
         width: '100%',
-        height: '50%',
+        height: 200,
         alignItems: 'center',
         justifyContent: 'center',       
         marginBottom: '5%',
@@ -73,6 +80,7 @@ const styles = StyleSheet.create({
         borderColor: 'rgba(0, 0, 0, 0.05)',
     },
     dashboardTitle: {
+        flex: 1,
         marginBottom: '5%',
         fontSize: 16,
         fontWeight: 'bold',
@@ -80,8 +88,10 @@ const styles = StyleSheet.create({
         color: 'black'
     },
     dashboardProfileBox: {
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-around',
+        alignItems: 'center',
         width: '100%',
         marginBottom: '20%',
     }, 
@@ -108,4 +118,10 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: 'bold',
     },
+    missionProgressBar: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        width: '100%',
+    }
 });

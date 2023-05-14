@@ -11,6 +11,7 @@
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
     "expo": "~48.0.15",
+    "expo-image-picker": "^14.1.1",
     "expo-status-bar": "~1.4.4",
     "openai": "^3.2.1",
     "react": "18.2.0",
@@ -22,6 +23,6 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
-  "proxy" : "http://dajungenv.eba-b3tjfhpr.ap-northeast-2.elasticbeanstalk.com",
+  "proxy": "http://dajungenv.eba-b3tjfhpr.ap-northeast-2.elasticbeanstalk.com",
   "private": true
 }

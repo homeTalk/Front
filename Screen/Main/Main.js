@@ -11,8 +11,8 @@ export default function Main() {
         <View style={styles.missionDashboard}>
           <Text style={styles.missionDashboardTitle}>오늘의 미션</Text>
           <MissionDashboard />
-          <Text style={styles.missionDashboardTitle}>우리 가족 일정</Text>
-          <Ddayboard />
+          {/* <Text style={styles.missionDashboardTitle}>우리 가족 일정</Text>
+          <Ddayboard /> */}
         </View>
     </View>
   );
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   missionDashboard: {
-    flex: 1,
     width: '80%',
+    height: 300,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
