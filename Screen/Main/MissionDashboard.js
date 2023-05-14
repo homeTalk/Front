@@ -1,37 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import Svg, { Path, Rect } from 'react-native-svg'; 
+import { ScreenContext } from '../../App'; 
 
 export default function MissionDashboard() {
 
     const [familyMember, setFamilyMember] = useState();
+    const { missionData, setMissionData } = useContext(ScreenContext);
 
-    const ServerURL = 'http://dajungenv.eba-b3tjfhpr.ap-northeast-2.elasticbeanstalk.com/';
-    const LoadMissionData = async() => {
-        await fetch(ServerURL + '/mission/1?family_id=5678&user_id=91011', {
-            method: 'get',
-        })
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return res.json();
-        })
-        .then((data) => {
-            console.log(data)
-        })
-        .catch(error => {
-            console.error('Error:', error);
-          });
-    };
-    useEffect(() => {
-        // LoadMissionData();
-    },[])
-
-
+    
     return (
         <View style={styles.dashboardContainer}>
-            <Text style={styles.dashboardTitle}>"지금 셀카 찍어서 업로드 하기"</Text>
+            <Text style={styles.dashboardTitle}>{missionData?.mission.mission_description}</Text>
             <View  style={styles.dashboardProfileBox}>
                 <View>
                     <View style={styles.profileBox}>

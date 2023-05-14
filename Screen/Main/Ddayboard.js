@@ -3,29 +3,29 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 export default function Ddayboard() {
 
-    const [DdayData, setDdayData] = useState(['우주 생일', '은상 생일']);
+    // const [DdayData, setDdayData] = useState(['우주 생일', '은상 생일']);
 
-    const ServerURL = 'http://dajungenv.eba-b3tjfhpr.ap-northeast-2.elasticbeanstalk.com/';
-    const LoadDdayData = async() => {
-        await fetch(ServerURL + '/mission/1?family_id=5678&user_id=91011', {
-            method: 'get',
-        })
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return res.json();
-        })
-        .then((data) => {
-            console.log(data)
-        })
-        .catch(error => {
-            console.error('Error:', error);
-          });
-    };
-    useEffect(() => {
-        // LoadDdayData();
-    },[])
+    // const ServerURL = 'http://dajungenv.eba-b3tjfhpr.ap-northeast-2.elasticbeanstalk.com/';
+    // const LoadDdayData = async() => {
+    //     await fetch(ServerURL + '/mission/1?family_id=5678&user_id=91011', {
+    //         method: 'get',
+    //     })
+    //     .then((res) => {
+    //         if (!res.ok) {
+    //             throw new Error('Network response was not ok');
+    //           }
+    //           return res.json();
+    //     })
+    //     .then((data) => {
+    //         console.log(data)
+    //     })
+    //     .catch(error => {
+    //         console.error('Error:', error);
+    //       });
+    // };
+    // useEffect(() => {
+    //     // LoadDdayData();
+    // },[])
 
 
     return (

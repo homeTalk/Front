@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Character from './Character';
 import MissionDashboard from './MissionDashboard';
-import Svg, { Path } from 'react-native-svg';  
 import Ddayboard from './Ddayboard';
 
 export default function Main() {
