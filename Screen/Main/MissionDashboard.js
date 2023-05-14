@@ -41,7 +41,7 @@ export default function MissionDashboard() {
             <View style={styles.missionProgressBar}>
                 <Svg width="199" height="12" viewBox="0 0 199 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <Rect width="199" height="12" rx="6" fill="#FFF4E2"/>
-                    <Rect width="51" height="12" rx="6" fill="#FFA41C"/>
+                    <Rect width="100" height="12" rx="6" fill="#FFA41C"/>
                 </Svg>
             </View>
         </View>
