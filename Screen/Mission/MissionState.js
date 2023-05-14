@@ -17,9 +17,9 @@ export default function MissionState() {
                                 <Image 
                                     style={styles.profileImg}
                                     source={
-                                        member.name === '춘식이' ? require('../../assets/민재.png')
-                                       :(member.name === '라이언' ? require('../../assets/세은.png')
-                                       :(member.name === '어피치' ? require('../../assets/은상.png')
+                                        member.name === '아빠' ? require('../../assets/민재.png') 
+                                       :(member.name === '엄마' ? require('../../assets/세은.png')
+                                       :(member.name === '민재' ? require('../../assets/은상.png')
                                        : require('../../assets/준서.png')))} />
                             </View>
                             <View style={styles.profileTextArea}> 

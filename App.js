@@ -9,7 +9,7 @@ export const ScreenContext = createContext();
 
 export default function App() {
 
-  const user = '어피치';
+  const user = '민재';
   const [screen, setScreen] = useState('main');
   const [missionData, setMissionData] = useState(null);
   const [userInputComplete, setUserInputComplete] = useState(false);
