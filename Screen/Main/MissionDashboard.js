@@ -6,6 +6,14 @@ import { ScreenContext } from '../../App';
 export default function MissionDashboard() {
 
     const { missionData, setMissionData } = useContext(ScreenContext);
+    const [missionRate, setMissionRate] = useState(0);
+    useEffect(() => {
+        let num = 0;
+        missionData?.family_members.map((member) => {
+            if(member.status) num += 1;
+        })
+        setMissionRate(num / missionData?.family_members.length * 200);
+    }, [missionRate, missionData])
 
     return (
         <View style={styles.dashboardContainer}>
@@ -39,7 +47,7 @@ export default function MissionDashboard() {
             <View style={styles.missionProgressBar}>
                 <Svg width="199" height="12" viewBox="0 0 199 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <Rect width="199" height="12" rx="6" fill="#FFF4E2"/>
-                    <Rect width="100" height="12" rx="6" fill="#FFA41C"/>
+                    <Rect width={missionRate.toString()} height="12" rx="6" fill="#FFA41C"/>
                 </Svg>
             </View>
         </View>

@@ -8,9 +8,18 @@ import { ScreenContext } from '../../App';
 export default function MissionModalFile() {
 
     const { inputModalOn, setInputModalOn } = useContext(MissionModalContext);
-    const { missionData, setMissionData } = useContext(ScreenContext);
+    const { missionData, setMissionData, userInputComplete, setUserInputComplete, user } = useContext(ScreenContext);
     const [ missionInput, setMissionInput ] = useState('');
 
+    const userInput = () => {
+        setUserInputComplete(true);
+        setInputModalOn(false);
+        let newMissionData = {...missionData};
+        newMissionData.family_members.map((member, i) => {
+            if(member.name === user) newMissionData.family_members[i].status = true;
+        })
+        setMissionData(newMissionData);
+    }
 
     return (
         <Modal
@@ -39,10 +48,10 @@ export default function MissionModalFile() {
                     </>
                     : <Image style={{width: '100%', height:'100%'}} source={{ uri: missionInput}} />}
                 </View>
-                <Pressable style={styles.customButton}>
+                <Pressable style={styles.customButton} onPress={() => {userInput()}}>
                     <View >
                         <Text 
-                            onPress={() => {setInputModalOn(true)}}
+                            
                             style={{
                                 fontSize: 16,
                                 fontWeight: 'bold',

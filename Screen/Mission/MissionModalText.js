@@ -6,8 +6,18 @@ import { ScreenContext } from '../../App';
 export default function MissionModalText() {
 
     const { inputModalOn, setInputModalOn } = useContext(MissionModalContext);
-    const { missionData, setMissionData } = useContext(ScreenContext);
+    const { missionData, setMissionData, userInputComplete, setUserInputComplete, user } = useContext(ScreenContext);
     const [ missionInput, setMissionInput ] = useState('');
+
+    const userInput = () => {
+        setUserInputComplete(true);
+        setInputModalOn(false);
+        let newMissionData = {...missionData};
+        newMissionData.family_members.map((member, i) => {
+            if(member.name === user) newMissionData.family_members[i].status = true;
+        })
+        setMissionData(newMissionData);
+    }
 
     return (
         <Modal
@@ -32,10 +42,10 @@ export default function MissionModalText() {
                             maxLength={38}/>
                     </View>
                 </View>
-                <Pressable style={styles.customButton}>
+                <Pressable style={styles.customButton} onPress={() => {userInput()}}>
                     <View >
                         <Text 
-                            onPress={() => {setInputModalOn(true)}}
+                            
                             style={{
                                 fontSize: 16,
                                 fontWeight: 'bold',

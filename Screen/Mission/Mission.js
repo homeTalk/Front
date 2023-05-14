@@ -10,8 +10,9 @@ export const MissionModalContext = createContext();
 
 export default function Mission() {
 
-    const { missionData, setMissionData } = useContext(ScreenContext);
+    const { missionData, setMissionData, userInputComplete, setUserInputComplete } = useContext(ScreenContext);
     const [inputModalOn, setInputModalOn] = useState(false);
+    
 
     return (
         <View style={styles.container}>
@@ -21,7 +22,7 @@ export default function Mission() {
             </View>
 
             <View style={styles.missionButtonArea}>
-                <Pressable style={styles.customButton}>
+                <Pressable style={userInputComplete ? styles.customButtonActivate : styles.customButton}>
                     <View >
                         <Text 
                             onPress={() => {setInputModalOn(true)}}
@@ -30,7 +31,7 @@ export default function Mission() {
                                 fontWeight: 'bold',
                                 textAlign: 'center',
                                 color: 'white'
-                            }}> 입력하기
+                            }}> {userInputComplete ? "입력 완료" : "입력하기"}
                         </Text>
                     </View>
                 </Pressable>
@@ -40,8 +41,8 @@ export default function Mission() {
                 <MissionState />
             </View>
             {missionData?.mission.mission_id === 1 
-            ? <MissionModalContext.Provider value={{ inputModalOn, setInputModalOn }}><MissionModalText/></MissionModalContext.Provider>
-            : <MissionModalContext.Provider value={{ inputModalOn, setInputModalOn }}><MissionModalFile/></MissionModalContext.Provider>}
+            ? <MissionModalContext.Provider value={{ inputModalOn, setInputModalOn }}><MissionModalText userInputComplete={userInputComplete} setUserInputComplete={setUserInputComplete}/></MissionModalContext.Provider>
+            : <MissionModalContext.Provider value={{ inputModalOn, setInputModalOn }}><MissionModalFile userInputComplete={userInputComplete} setUserInputComplete={setUserInputComplete}/></MissionModalContext.Provider>}
         </View>
     );
 }
@@ -71,6 +72,14 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    customButtonActivate: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '45%',
+        height: '50%',
+        borderRadius: 20,
+        backgroundColor: '#FFA41C',
     },
     customButton: {
         alignItems: 'center',

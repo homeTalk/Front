@@ -9,12 +9,18 @@ export const ScreenContext = createContext();
 
 export default function App() {
 
+  const user = '어피치';
   const [screen, setScreen] = useState('main');
   const [missionData, setMissionData] = useState(null);
+  const [userInputComplete, setUserInputComplete] = useState(false);
+
   const ServerURL = 'http://dajungenv.eba-b3tjfhpr.ap-northeast-2.elasticbeanstalk.com/';
     const LoadMissionData = async() => {
-        await fetch(ServerURL + '/mission/2?family_id=5678&user_id=91011', {
-            method: 'get',
+        // await fetch(ServerURL + '/mission/1?family_id=5678&user_id=91011', {
+        //     method: 'get',
+        // })
+        await fetch(ServerURL + '/mission/1?family_id=5679&user_id=91011', {
+          method: 'get',
         })
         .then((res) => {
             if (!res.ok) {
@@ -37,7 +43,7 @@ export default function App() {
   return (
       <SafeAreaView style={{ flex: 1, marginTop: StatusBar.currentHeight }}>
           <View style={styles.container}>
-            <ScreenContext.Provider value={{screen, setScreen, missionData, setMissionData}}>
+            <ScreenContext.Provider value={{screen, setScreen, missionData, setMissionData, user, userInputComplete, setUserInputComplete}}>
               <UpperBar />
                 {screen === 'main' ? <Main/> : null}
                 {screen === 'mission' ? <Mission/> : null}

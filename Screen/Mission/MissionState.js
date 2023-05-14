@@ -14,7 +14,13 @@ export default function MissionState() {
                     return(
                         <View key={i} style={styles.familyStateBox}> 
                             <View style={member.status ? styles.profileBoxActivate : styles.profileBox}>
-                                <Image source={require('../../assets/은상.png')} style={styles.profileImg}/>
+                                <Image 
+                                    style={styles.profileImg}
+                                    source={
+                                        member.name === '춘식이' ? require('../../assets/민재.png')
+                                       :(member.name === '라이언' ? require('../../assets/세은.png')
+                                       :(member.name === '어피치' ? require('../../assets/은상.png')
+                                       : require('../../assets/준서.png')))} />
                             </View>
                             <View style={styles.profileTextArea}> 
                                 <Text style={styles.profileText1}>{member.name}</Text>
