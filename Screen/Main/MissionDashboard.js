@@ -14,28 +14,28 @@ export default function MissionDashboard() {
             <Text style={styles.dashboardTitle}>{missionData?.mission.mission_description}</Text>
             <View  style={styles.dashboardProfileBox}>
                 <View>
-                    <View style={styles.profileBox}>
+                    <View style={missionData?.family_members[0].status ? styles.profileBoxActivate : styles.profileBox }>
                         <Image source={require('../../assets/민재.png')} style={styles.profileImg}/>
                     </View>
-                    <Text style={styles.profileText}>민재</Text>
+                    <Text style={styles.profileText}>{missionData?.family_members[0].name}</Text>
                 </View>
                 <View>
-                    <View style={styles.profileBox}>
+                    <View style={missionData?.family_members[1].status ? styles.profileBoxActivate : styles.profileBox }>
                         <Image source={require('../../assets/세은.png')} style={styles.profileImg}/>
                     </View>
-                    <Text style={styles.profileText}>세은</Text>
+                    <Text style={styles.profileText}>{missionData?.family_members[1].name}</Text>
                 </View>
                 <View>
-                    <View style={styles.profileBox}>
+                    <View style={missionData?.family_members[2].status ? styles.profileBoxActivate : styles.profileBox }>
                         <Image source={require('../../assets/은상.png')} style={styles.profileImg}/>
                     </View>
-                    <Text style={styles.profileText}>은상</Text>
+                    <Text style={styles.profileText}>{missionData?.family_members[2].name}</Text>
                 </View>
                 <View>
-                    <View style={styles.profileBox}>
+                    <View style={missionData?.family_members[3].status ? styles.profileBoxActivate : styles.profileBox }>
                         <Image source={require('../../assets/준서.png')} style={styles.profileImg}/>
                     </View>
-                    <Text style={styles.profileText}>준서</Text>
+                    <Text style={styles.profileText}>{missionData?.family_members[3].name}</Text>
                 </View>
             </View>
             <View style={styles.missionProgressBar}>
@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
     },
     dashboardTitle: {
         flex: 1,
-        marginBottom: '5%',
+        marginTop: '5%',
+        marginBottom: '15%',
         fontSize: 16,
         fontWeight: 'bold',
         textAlign: 'center',
@@ -75,13 +76,21 @@ const styles = StyleSheet.create({
         width: '100%',
         marginBottom: '20%',
     }, 
-    profileBox: {
+    profileBoxActivate: {
         alignItems: 'center',
         justifyContent: 'center',
         width: 56,
         height: 56,
         borderColor: '#88d659',
         borderWidth: 3,
+        borderRadius: 100,
+        overflow: 'hidden'
+    },
+    profileBox: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 56,
+        height: 56,
         borderRadius: 100,
         overflow: 'hidden'
     },
